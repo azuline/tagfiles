@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "tagfiles"
-version = "0.1.1"
+version = "0.1.2"
 description = "A tagging interface for multiple audio formats and metadata containers."
 authors = ["azuline <azuline@riseup.net>"]
-license = "MIT"
+license = "Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/dzlr/tagfiles"
 packages = [
