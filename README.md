@@ -2,8 +2,8 @@
 
 [![Build Status](https://travis-ci.org/azuline/tagfiles.svg?branch=master)](https://travis-ci.org/azuline/tagfiles)
 [![Coverage Status](https://coveralls.io/repos/github/azuline/tagfiles/badge.svg?branch=master)](https://coveralls.io/github/azuline/tagfiles?branch=master)
-[![Pypi](https://img.shields.io/pypi/v/tagfiles.svg?style=flat-square)](https://pypi.python.org/pypi/tagfiles)
-[![Pyversions](https://img.shields.io/pypi/pyversions/tagfiles.svg?style=flat-square)](https://pypi.python.org/pypi/tagfiles)
+[![Pypi](https://img.shields.io/pypi/v/tagfiles.svg)](https://pypi.python.org/pypi/tagfiles)
+[![Pyversions](https://img.shields.io/pypi/pyversions/tagfiles.svg)](https://pypi.python.org/pypi/tagfiles)
 
 A tagging interface for multiple audio formats and metadata containers.
 
