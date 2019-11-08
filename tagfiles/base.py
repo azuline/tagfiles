@@ -90,9 +90,9 @@ class BaseTag:
         for t in fields:
             if t in self.mut.tags:
                 try:
-                    return self._split_values([
-                        self._decode_tag(s) for s in self.mut.tags[t]
-                    ])
+                    return self._split_values(
+                        [self._decode_tag(s) for s in self.mut.tags[t]]
+                    )
                 except KeyError:
                     pass
         return []
@@ -230,7 +230,8 @@ class BaseTag:
     @property
     def artist_main(self):
         return [
-            a for a in self.get_list(self.tags_artist_main)
+            a
+            for a in self.get_list(self.tags_artist_main)
             if not a.startswith('feat. ')
         ]
 
@@ -238,7 +239,7 @@ class BaseTag:
     def artist_main(self, values):
         self.set_list(
             self.tags_artist_main,
-            pack_list(values) + [f'feat. {a}' for a in self.artist_feature]
+            pack_list(values) + [f'feat. {a}' for a in self.artist_feature],
         )
 
     @property
@@ -253,7 +254,7 @@ class BaseTag:
     def artist_feature(self, values):
         self.set_list(
             self.tags_artist_main,
-            [f'feat. {v}' for v in pack_list(values)] + self.artist_main
+            [f'feat. {v}' for v in pack_list(values)] + self.artist_main,
         )
 
     @property

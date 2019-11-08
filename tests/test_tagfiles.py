@@ -8,13 +8,14 @@ FAKE_ALBUM_DIR = (Path(__file__) / '../fakelib/New Album').resolve()
 
 
 @pytest.mark.parametrize(
-    'filepath, track_num', [
+    'filepath, track_num',
+    [
         ('track1.flac', '1'),
         ('track2.m4a', '2'),
         ('track3.mp3', '3'),
         ('track4.vorbis.ogg', '4'),
         ('track5.opus.ogg', '5'),
-    ]
+    ],
 )
 def test_getters(filepath, track_num):
     tf = TagFile(FAKE_ALBUM_DIR / filepath)
@@ -53,13 +54,14 @@ def test_m4a_noninteger_tracks():
 
 
 @pytest.mark.parametrize(
-    'filepath', [
+    'filepath',
+    [
         'track1.flac',
         'track2.m4a',
         'track3.mp3',
         'track4.vorbis.ogg',
         'track5.opus.ogg',
-    ]
+    ],
 )
 def test_setters(filepath):
     tf = TagFile(FAKE_ALBUM_DIR / filepath)
@@ -113,13 +115,14 @@ def test_setters(filepath):
 
 
 @pytest.mark.parametrize(
-    'filepath', [
+    'filepath',
+    [
         'track1.flac',
         'track2.m4a',
         'track3.mp3',
         'track4.vorbis.ogg',
         'track5.opus.ogg',
-    ]
+    ],
 )
 def test_setters_str_list_intermix(filepath):
     tf = TagFile(FAKE_ALBUM_DIR / filepath)

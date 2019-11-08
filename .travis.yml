@@ -2,6 +2,7 @@ language: python
 sudo: required
 dist: xenial
 python:
+  - "3.6"
   - "3.7"
 cache: pip
 install:
@@ -9,7 +10,7 @@ install:
   - poetry install
 script:
   - poetry run pytest --cov-report term-missing --cov-branch --cov=tagfiles tests/
-  - poetry run yapf --parallel --diff --recursive .
+  - poetry run black -S -t py37 -l 79 --check tagfiles tests
   - poetry run isort -rc -c .
   - poetry run flake8
 after_success:

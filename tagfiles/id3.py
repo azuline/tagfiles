@@ -11,7 +11,7 @@ from .base import BaseTag
 
 class MP3Tag(BaseTag):
 
-    extensions = '.mp3',
+    extensions = ('.mp3',)
     mutagen_type = MP3
     tags_type = ID3
 
@@ -51,7 +51,8 @@ class MP3Tag(BaseTag):
                 key, desc = fields[0].split(':', 1)
                 kwargs = dict(desc=desc, text=value)
                 old_frames = [
-                    f for f in self.mut.tags.getall(key)
+                    f
+                    for f in self.mut.tags.getall(key)
                     if getattr(f, 'desc', None) != desc
                 ]
                 self.mut.tags.delall(key)
@@ -68,9 +69,9 @@ class MP3Tag(BaseTag):
         _, _, full_frame = self._get_full_paired_text_frame()
         if not full_frame:
             return []
-        return self._split_values([
-            p[1] for p in full_frame.people if p[0].lower() == role.lower()
-        ])
+        return self._split_values(
+            [p[1] for p in full_frame.people if p[0].lower() == role.lower()]
+        )
 
     def _get_full_paired_text_frame(self):
         for tag, frame in {'TIPL': TIPL, 'IPLS': IPLS}.items():
@@ -100,9 +101,9 @@ class MP3Tag(BaseTag):
         for t in fields:
             if t in self.mut.tags:
                 try:
-                    return self._split_values([
-                        self._decode_tag(s) for s in self.mut.tags[t]
-                    ])
+                    return self._split_values(
+                        [self._decode_tag(s) for s in self.mut.tags[t]]
+                    )
                 except KeyError:
                     pass
         return []
@@ -118,7 +119,7 @@ class MP3Tag(BaseTag):
     def track_number(self, value):
         self.set_tag(
             fields=self.tags_track_number,
-            value=change_tag_num(self.get_tag(self.tags_track_number), value)
+            value=change_tag_num(self.get_tag(self.tags_track_number), value),
         )
 
     @property
@@ -131,7 +132,7 @@ class MP3Tag(BaseTag):
             fields=self.tags_track_number,
             value=change_tag_total(
                 self.get_tag(self.tags_track_number), value
-            )
+            ),
         )
 
     @property
@@ -142,7 +143,7 @@ class MP3Tag(BaseTag):
     def disc_number(self, value):
         self.set_tag(
             fields=self.tags_disc_number,
-            value=change_tag_num(self.get_tag(self.tags_disc_number), value)
+            value=change_tag_num(self.get_tag(self.tags_disc_number), value),
         )
 
     @property
@@ -153,7 +154,7 @@ class MP3Tag(BaseTag):
     def disc_total(self, value):
         self.set_tag(
             fields=self.tags_disc_number,
-            value=change_tag_total(self.get_tag(self.tags_disc_number), value)
+            value=change_tag_total(self.get_tag(self.tags_disc_number), value),
         )
 
     @property

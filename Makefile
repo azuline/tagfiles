@@ -2,13 +2,13 @@ cov:
 	pytest --cov-report term-missing --cov-branch --cov=tagfiles tests/
 
 lint:
-	yapf --in-place --parallel --recursive .
+	black -S -t py37 -l 79 tagfiles tests
 	isort -rc .
 	flake8
 
 tests:
 	pytest tests/
-	yapf --parallel --diff --recursive .
+	black -S -t py37 -l 79 --check tagfiles tests
 	isort -rc -c .
 	flake8
 

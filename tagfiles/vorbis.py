@@ -5,7 +5,7 @@ from mutagen.oggvorbis import OggVCommentDict, OggVorbis
 from .base import BaseTag
 
 
-class VorbisTag():
+class VorbisTag:
     tags_title = ['title']
     tags_version = ['version']
     tags_date = ['date', 'year']
@@ -33,18 +33,18 @@ class VorbisTag():
 
 
 class FLACTag(VorbisTag, BaseTag):
-    extensions = '.flac',
+    extensions = ('.flac',)
     mutagen_type = FLAC
     tags_type = VCFLACDict
 
 
 class OggVorbisTag(VorbisTag, BaseTag):
-    extensions = '.ogg',
+    extensions = ('.ogg',)
     mutagen_type = OggVorbis
     tags_type = OggVCommentDict
 
 
 class OggOpusTag(VorbisTag, BaseTag):
-    extensions = '.ogg',
+    extensions = ('.ogg',)
     mutagen_type = OggOpus
     tags_type = OggOpusVComment

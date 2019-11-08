@@ -8,7 +8,7 @@ from .base import BaseTag
 
 class AACTag(BaseTag):
 
-    extensions = '.m4a', '.m4b',
+    extensions = ('.m4a', '.m4b')
     mutagen_type = MP4
     tags_type = MP4Tags
 
@@ -41,7 +41,7 @@ class AACTag(BaseTag):
         self.set_tag(
             fields=self.tags_version,
             value=[unpack_first(value).encode('utf-8')],
-            cast_to_str=False
+            cast_to_str=False,
         )
 
     @property
@@ -55,7 +55,7 @@ class AACTag(BaseTag):
             values=[
                 change_tag_num(self.get_tag(self.tags_track_number), value)
             ],
-            cast_to_str=False
+            cast_to_str=False,
         )
 
     @property
@@ -69,7 +69,7 @@ class AACTag(BaseTag):
             values=[
                 change_tag_total(self.get_tag(self.tags_track_number), value)
             ],
-            cast_to_str=False
+            cast_to_str=False,
         )
 
     @property
@@ -83,7 +83,7 @@ class AACTag(BaseTag):
             values=[
                 change_tag_num(self.get_tag(self.tags_disc_number), value)
             ],
-            cast_to_str=False
+            cast_to_str=False,
         )
 
     @property
@@ -97,7 +97,7 @@ class AACTag(BaseTag):
             values=[
                 change_tag_total(self.get_tag(self.tags_disc_number), value)
             ],
-            cast_to_str=False
+            cast_to_str=False,
         )
 
     @property
@@ -106,10 +106,10 @@ class AACTag(BaseTag):
 
     @label.setter
     def label(self, value):
-        self.set_tag(  # yapf: disable
+        self.set_tag(
             fields=self.tags_label,
             value=unpack_first(value).encode('utf-8'),
-            cast_to_str=False
+            cast_to_str=False,
         )
 
     @property
@@ -121,7 +121,7 @@ class AACTag(BaseTag):
         self.set_tag(
             fields=self.tags_catalog_number,
             value=unpack_first(value).encode('utf-8'),
-            cast_to_str=False
+            cast_to_str=False,
         )
 
     @property
@@ -133,7 +133,7 @@ class AACTag(BaseTag):
         self.set_tag(
             fields=self.tags_release_type,
             value=unpack_first(value).encode('utf-8'),
-            cast_to_str=False
+            cast_to_str=False,
         )
 
     @property
@@ -145,7 +145,7 @@ class AACTag(BaseTag):
         self.set_list(
             fields=self.tags_artist_remixer,
             values=[v.encode('utf-8') for v in pack_list(values)],
-            cast_to_str=False
+            cast_to_str=False,
         )
 
     @property
@@ -157,7 +157,7 @@ class AACTag(BaseTag):
         self.set_list(
             fields=self.tags_artist_producer,
             values=[v.encode('utf-8') for v in pack_list(values)],
-            cast_to_str=False
+            cast_to_str=False,
         )
 
     @property
@@ -169,7 +169,7 @@ class AACTag(BaseTag):
         self.set_list(
             fields=self.tags_artist_conductor,
             values=[v.encode('utf-8') for v in pack_list(values)],
-            cast_to_str=False
+            cast_to_str=False,
         )
 
     @property
@@ -181,7 +181,7 @@ class AACTag(BaseTag):
         self.set_list(
             fields=self.tags_artist_djmixer,
             values=[v.encode('utf-8') for v in pack_list(values)],
-            cast_to_str=False
+            cast_to_str=False,
         )
 
 
