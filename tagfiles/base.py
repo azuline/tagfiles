@@ -44,11 +44,11 @@ class BaseTag:
         self.mut.tags = self.tags_type()
 
     def __repr__(self):
-        return f'<{self.__class__.__name__} object of {self.path}>'
+        return f"<{self.__class__.__name__} object of {self.path}>"
 
     @classmethod
     def get_allowed_extensions(cls):
-        if not hasattr(cls, '_allowed_extensions'):
+        if not hasattr(cls, "_allowed_extensions"):
             cls._allowed_extensions = defaultdict(list)
             for subcls in cls.__subclasses__():
                 for ext in subcls.extensions:
@@ -58,15 +58,16 @@ class BaseTag:
     @staticmethod
     def _decode_tag(tag):
         if isinstance(tag, bytes):
-            return tag.decode('utf-8')
+            return tag.decode("utf-8")
         elif isinstance(tag, tuple):
             return tag
         return str(tag)
 
     def _split_values(self, values):
-        return list(
-            chain.from_iterable(re.split(r' \\\\ | / |; ', v) for v in values)
+        values = list(
+            chain.from_iterable(re.split(r" \\\\ | / |; ", v) for v in values)
         )
+        return [v for v in values if v]
 
     def get_tag(self, fields):
         for t in fields:
@@ -80,7 +81,7 @@ class BaseTag:
     def set_tag(self, fields, value, cast_to_str=True):
         if isinstance(value, list):
             if cast_to_str:
-                value = r' \\ '.join(str(v) for v in value)
+                value = r" \\ ".join(str(v) for v in value)
             else:
                 value = value[0]
         if fields:
@@ -232,29 +233,29 @@ class BaseTag:
         return [
             a
             for a in self.get_list(self.tags_artist_main)
-            if not a.startswith('feat. ')
+            if not a.startswith("feat. ")
         ]
 
     @artist_main.setter
     def artist_main(self, values):
         self.set_list(
             self.tags_artist_main,
-            pack_list(values) + [f'feat. {a}' for a in self.artist_feature],
+            pack_list(values) + [f"feat. {a}" for a in self.artist_feature],
         )
 
     @property
     def artist_feature(self):
         return [
-            re.sub(r'^feat\. ', '', a)
+            re.sub(r"^feat\. ", "", a)
             for a in self.get_list(self.tags_artist_main)
-            if a.startswith('feat. ')
+            if a.startswith("feat. ")
         ]
 
     @artist_feature.setter
     def artist_feature(self, values):
         self.set_list(
             self.tags_artist_main,
-            [f'feat. {v}' for v in pack_list(values)] + self.artist_main,
+            [f"feat. {v}" for v in pack_list(values)] + self.artist_main,
         )
 
     @property
