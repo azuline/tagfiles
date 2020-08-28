@@ -1,5 +1,4 @@
 from mutagen.mp4 import MP4, MP4Tags
-
 from tagfiles._common import pack_list, unpack_first
 from tagfiles.errors import NonIntegerTag
 
@@ -183,6 +182,20 @@ class AACTag(BaseTag):
             values=[v.encode('utf-8') for v in pack_list(values)],
             cast_to_str=False,
         )
+
+    @property
+    def image_mime(self):
+        image = (self.mut.tags['covr'] or [None])[0]
+        if image:
+            if image.imageformat == 13:
+                return 'image/jpeg'
+            elif image.imageformat == 14:
+                return 'image/png'
+        return None
+
+    @property
+    def image(self):
+        return (self.mut.tags['covr'] or [None])[0]
 
 
 def get_num(tag):

@@ -1,7 +1,6 @@
 from mutagen import id3
 from mutagen.id3 import ID3, IPLS, TIPL
 from mutagen.mp3 import MP3
-
 from tagfiles._common import unpack_first
 
 from .base import BaseTag
@@ -172,6 +171,16 @@ class MP3Tag(BaseTag):
     @artist_djmixer.setter
     def artist_djmixer(self, values):
         self.set_paired_text_frame(self.tags_artist_djmixer, values)
+
+    @property
+    def image_mime(self):
+        image = (self.mut.tags.getall('APIC') or [None])[0]
+        return image.mime if image else None
+
+    @property
+    def image(self):
+        image = (self.mut.tags.getall('APIC') or [None])[0]
+        return image.data if image else None
 
 
 def get_num(tag):

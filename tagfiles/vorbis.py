@@ -1,4 +1,7 @@
-from mutagen.flac import FLAC, VCFLACDict
+import base64
+
+from mutagen.flac import FLAC, Picture, VCFLACDict
+from mutagen.flac import error as FLACError
 from mutagen.oggopus import OggOpus, OggOpusVComment
 from mutagen.oggvorbis import OggVCommentDict, OggVorbis
 
@@ -30,6 +33,29 @@ class VorbisTag:
 
     def create_tags_object(self):
         self.mut.add_tags()
+
+    @property
+    def _picture(self):
+        if getattr(self, '__picture__', None):
+            return self.__picture
+
+        data = (self.mut.get('metadata_block_picture') or [None])[0]
+        if data:
+            try:
+                self.__picture = Picture(base64.b64decode(data))
+                return self.__picture
+            except FLACError:
+                pass
+
+        return None
+
+    @property
+    def image_mime(self):
+        return self._picture.mime if self._picture else None
+
+    @property
+    def image(self):
+        return self._picture.data if self._picture else None
 
 
 class FLACTag(VorbisTag, BaseTag):

@@ -86,9 +86,13 @@ artist = {
   ArtistRoles.CONDUCTOR: List[str]
   ArtistRoles.DJMIXER: List[str]
 }
+image_mime: str
+image: bytes
 ```
 
 Fields can be edited by setting new values to the attributes of the TagFile.
 To edit the date, which is special, assign a string in the format of `%Y-%m-%d`
 or `%Y` to the `date` attribute. To save the changes made to the tags, call the
 `save()` method.
+
+_Note: Image field is not currently editable._

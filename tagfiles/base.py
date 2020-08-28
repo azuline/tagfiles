@@ -297,3 +297,11 @@ class BaseTag:
     @artist_djmixer.setter
     def artist_djmixer(self, values):
         self.set_list(self.tags_artist_djmixer, values)
+
+    @property
+    def image_mime(self):
+        return None
+
+    @property
+    def image(self):
+        return None
