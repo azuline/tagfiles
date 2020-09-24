@@ -68,7 +68,7 @@ def test_setters(filepath):
     tf.track_number = 10
     assert tf.track_number == '10'
     tf.title = 'New Title'
-    assert tf.title == f'New Title'
+    assert tf.title == 'New Title'
     tf.album = 'New Album'
     assert tf.album == 'New Album'
     tf.artist_album = ['New Artist A', 'New Artist B']
@@ -129,7 +129,7 @@ def test_setters_str_list_intermix(filepath):
     tf.track_number = [10]
     assert tf.track_number == '10'
     tf.title = ['New Title']
-    assert tf.title == f'New Title'
+    assert tf.title == 'New Title'
     tf.album = ['New Album']
     assert tf.album == 'New Album'
     tf.artist_album = r'New Artist A \\ New Artist B'

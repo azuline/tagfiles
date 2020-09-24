@@ -1,6 +1,7 @@
 from mutagen import id3
 from mutagen.id3 import ID3, IPLS, TIPL
 from mutagen.mp3 import MP3
+
 from tagfiles._common import unpack_first
 
 from .base import BaseTag
