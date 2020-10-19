@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 from collections import defaultdict
 from itertools import chain
 
@@ -34,7 +35,7 @@ class BaseTag:
     tags_artist_djmixer = []
 
     def __init__(self, filepath, mut):
-        self.path = filepath
+        self.path = Path(filepath)
         self.mut = mut
         if self.mut.tags is None:
             self.create_tags_object()
