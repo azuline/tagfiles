@@ -1,15 +1,12 @@
-cov:
-	pytest --cov-report term-missing --cov-branch --cov=tagfiles tests/
-
 lint:
-	black -S -t py37 -l 79 tagfiles tests
-	isort -rc .
+	black .
+	isort .
 	flake8
 
 tests:
-	pytest tests/
-	black -S -t py37 -l 79 --check tagfiles tests
-	isort -rc -c .
+	pytest --cov-report term-missing --cov-branch --cov=. tests/
+	black --check .
+	isort -c .
 	flake8
 
-.PHONY: cov lint tests
+.PHONY: lint tests

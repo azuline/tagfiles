@@ -1,7 +1,7 @@
 import re
-from pathlib import Path
 from collections import defaultdict
 from itertools import chain
+from pathlib import Path
 
 from tagfiles._common import ArtistRoles, TagDate, pack_list, unpack_first
 

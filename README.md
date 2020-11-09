@@ -1,7 +1,7 @@
 # tagfiles
 
-[![Build Status](https://travis-ci.org/azuline/tagfiles.svg?branch=master)](https://travis-ci.org/azuline/tagfiles)
-[![Coverage Status](https://coveralls.io/repos/github/azuline/tagfiles/badge.svg?branch=master)](https://coveralls.io/github/azuline/tagfiles?branch=master)
+[![CI](https://img.shields.io/github/workflow/status/azuline/tagfiles/CI)](https://github.com/azuline/tagfiles/actions)
+[![codecov](https://img.shields.io/codecov/c/github/azuline/tagfiles?token=VF37TOZ5HJ)](https://codecov.io/gh/azuline/tagfiles)
 [![Pypi](https://img.shields.io/pypi/v/tagfiles.svg)](https://pypi.python.org/pypi/tagfiles)
 [![Pyversions](https://img.shields.io/pypi/pyversions/tagfiles.svg)](https://pypi.python.org/pypi/tagfiles)
 
