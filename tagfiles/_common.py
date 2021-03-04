@@ -19,7 +19,8 @@ class TagDate:
         if value:
             if re.match(r'\d{4}$', value):
                 self.year = int(value)
-            elif re.match(r'\d{4}-\d{2}-\d{2}$', value):
+            elif re.match(r'\d{4}-\d{2}-\d{2}', value):
+                # There may be a time value after the date... allow that and other crap.
                 self.date = value
                 self.year = int(self.date[:4])
 

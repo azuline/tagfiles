@@ -15,8 +15,21 @@ def test_tag_date_date():
     assert td.date == '2010-10-10'
 
 
+def test_tag_date_date_extra_crap():
+    td = TagDate('2010-10-10 01:01:01')
+    assert td.year == 2010
+    assert td.date == '2010-10-10'
+
+
 @pytest.mark.parametrize(
-    'value', ['abc', '201-10-30', 'July 20th, 2018', '', None]
+    'value',
+    [
+        'abc',
+        '201-10-30',
+        'July 20th, 2018',
+        '',
+        None,
+    ],
 )
 def test_tag_date_none(value):
     td = TagDate(value)
