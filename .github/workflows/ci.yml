@@ -7,27 +7,29 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
+  test:
+    name: Test
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        pyversion: ['3.6', '3.7', '3.8', '3.9']
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.pyversion }}
       - uses: abatilo/actions-poetry@v2.1.0
       - name: Cache dependencies
         id: cache-deps
         uses: actions/cache@v2
         with:
           path: ~/.cache/pypoetry/virtualenvs
-          key: "${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}"
+          key: "${{ runner.os }}-${{ matrix.pyversion }}-poetry-${{ hashFiles('**/poetry.lock') }}"
       - name: Install dependencies
         if: steps.cache-deps.outputs.cache-hit != 'true'
         run: |
           poetry install
-          poetry run pip install tox tox-gh-actions
       - name: Run tests
-        run: poetry run tox
-      - name: Run tests with coverage
         run: poetry run pytest --cov-report=xml --cov=. --cov-branch tests/
       - name: Run lint check
         run: |
