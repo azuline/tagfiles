@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "tagfiles"
-version = "0.3.3"
+version = "0.4.0-dev"
 description = "A tagging interface for multiple audio formats and metadata containers."
 authors = ["azuline <azuline@riseup.net>"]
 license = "Apache-2.0"
@@ -11,7 +11,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.8"
 mutagen = "^1.42"
 
 [tool.poetry.dev-dependencies]
